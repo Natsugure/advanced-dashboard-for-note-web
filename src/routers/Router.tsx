@@ -4,22 +4,29 @@ import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
 import { LoginPage } from "../features/auth/pages/LoginPage";
 import { SettingsPage } from "../features/settings/pages/SettingsPage";
 import { Header } from "../shared/components/layouts/Header";
+import { AuthGuardWrapper } from "../features/auth/components/AuthGuardWrapper";
+import { RegisterPage } from "../features/auth/pages/RegisterPage";
 
 const router = createBrowserRouter([
   {
     element: <Header />,
     children: [
       {
-        path: "/",
-        element: <App />,
-      },
-      {
-        path: "/dashboard",
-        element: <DashboardPage />,
-      },
-      {
-        path: "/settings",
-        element: <SettingsPage />,
+        element: <AuthGuardWrapper />,
+        children: [
+          {
+            path: "/",
+            element: <App />,
+          },
+          {
+            path: "/dashboard",
+            element: <DashboardPage />,
+          },
+          {
+            path: "/settings",
+            element: <SettingsPage />,
+          }
+        ]
       },
       {
         path: "/login",
@@ -27,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <LoginPage />,
+        element: <RegisterPage />,
       }
     ]
   }

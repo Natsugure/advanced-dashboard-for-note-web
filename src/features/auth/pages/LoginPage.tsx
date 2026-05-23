@@ -5,7 +5,7 @@ export function LoginPage() {
   return (
     <>
       <Title order={2}>ログインページ</Title>
-      <SignIn />
+      <SignIn routing="path" path="/login" fallbackRedirectUrl="/dashboard" />
     </>
   )
 }
