@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router'
 import { ClerkProvider } from '@clerk/react'
 import router from './routers/Router.tsx'
 import '@mantine/core/styles.css'
+import '@mantine/charts/styles.css';
 import './theme.css'
 import { MantineProvider } from '@mantine/core'
 
