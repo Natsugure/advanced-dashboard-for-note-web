@@ -1,5 +1,5 @@
-import { Container, Table, Title } from "@mantine/core"
-import { LineChart } from "@mantine/charts";
+import { Container, Table, Tabs, Title } from "@mantine/core"
+import { BarChart, LineChart } from "@mantine/charts";
 
 export function DashboardPage() {
   const data = [
@@ -48,32 +48,67 @@ export function DashboardPage() {
     <>
       <Container size="lg" mt="xl">
         <Title order={2}>ダッシュボード</Title>
-        <Container size="lg" mt="xl">
-          <LineChart
-            h={300}
-            data={data}
-            dataKey="date"
-            series={[
-              { name: 'read', color: 'green.8' },
-              { name: 'like', color: 'pink.6' },
-              { name: 'comment', color: 'gray.6' },
-            ]}
-            curveType="linear"
-          />
-        </Container>
-        <Container size="md" mt="xl">
-          <Table>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>日付</Table.Th>
-                <Table.Th>ビュー</Table.Th>
-                <Table.Th>いいね</Table.Th>
-                <Table.Th>コメント</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{rows}</Table.Tbody>
-          </Table>
-        </Container>
+        <Tabs defaultValue="daily" mt="md">
+          <Tabs.List>
+            <Tabs.Tab value="daily">取得日基準</Tabs.Tab>
+            <Tabs.Tab value="article">記事ごと</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="daily">
+            <Container size="lg" mt="xl">
+              <LineChart
+                h={300}
+                data={data}
+                dataKey="date"
+                series={[
+                  { name: 'read', color: 'green.8' },
+                  { name: 'like', color: 'pink.6' },
+                  { name: 'comment', color: 'gray.6' },
+                ]}
+                curveType="linear"
+              />
+            </Container>
+            <Container size="md" mt="xl">
+              <Table>
+                <Table.Thead>
+                  <Table.Tr>
+                    <Table.Th>日付</Table.Th>
+                    <Table.Th>ビュー</Table.Th>
+                    <Table.Th>いいね</Table.Th>
+                    <Table.Th>コメント</Table.Th>
+                  </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>{rows}</Table.Tbody>
+              </Table>
+            </Container>
+          </Tabs.Panel>
+          <Tabs.Panel value="article">
+            <Container size="lg" mt="xl">
+              <BarChart
+                h={300}
+                data={data}
+                dataKey="date"
+                series={[
+                  { name: 'read', color: 'green.8' },
+                  { name: 'like', color: 'pink.6' },
+                  { name: 'comment', color: 'gray.6' },
+                ]}
+              />
+            </Container>
+            <Container size="md" mt="xl">
+              <Table>
+                <Table.Thead>
+                  <Table.Tr>
+                    <Table.Th>日付</Table.Th>
+                    <Table.Th>ビュー</Table.Th>
+                    <Table.Th>いいね</Table.Th>
+                    <Table.Th>コメント</Table.Th>
+                  </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>{rows}</Table.Tbody>
+              </Table>
+            </Container>
+          </Tabs.Panel>
+        </Tabs>
       </Container>
     </>
   )
