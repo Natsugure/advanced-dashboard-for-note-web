@@ -1,4 +1,5 @@
 import type { paths } from "@/types/api"
+import type { Dayjs } from "dayjs"
 
 type ArticleStatsResponse =
   paths["/api/me/articles/{noteArticleId}/stats"]["get"]["responses"][200]["content"]["application/json"]
@@ -18,6 +19,7 @@ export interface TrendDataPoint {
 
 export interface ArticleDataPoint {
   title: string
+  publishedAt: Dayjs
   read: number
   like: number
   comment: number
