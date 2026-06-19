@@ -6,6 +6,7 @@ import { useStats } from "@/infrastructures/api/hooks/useStats"
 export function useArticleData() {
   const [articles, setArticles] = useState<ArticleWithStats[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | undefined>(undefined)
   const { fetchAllStats } = useStats()
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export function useArticleData() {
         setArticles(articleWithStats)
       } catch (e) {
         console.error(e)
+        setError("統計の取得に失敗しました")
       } finally {
         setIsLoading(false)
       }
@@ -27,7 +29,7 @@ export function useArticleData() {
     fetch()
   }, [])
 
-  return { data: toArticleDataPoints(articles), isLoading }
+  return { data: toArticleDataPoints(articles), isLoading, error }
 }
 
 function toArticleDataPoints(articles: ArticleWithStats[]): ArticleDataPoint[] {

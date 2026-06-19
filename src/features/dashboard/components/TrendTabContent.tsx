@@ -1,4 +1,4 @@
-import { Box, Container, LoadingOverlay } from "@mantine/core"
+import { Alert, Box, Center, Container, LoadingOverlay, Overlay } from "@mantine/core"
 import { TrendLineChart } from "./TrendLineChart"
 import { TrendTable } from "./TrendTable"
 import { useTrendData } from "../hooks/useTrendData"
@@ -13,6 +13,15 @@ export function TrendTabContent() {
         zIndex={1000}
         overlayProps={{ radius: 'sm', blur: 1 }}
       />
+      {error && (
+        <Overlay zIndex={1000} color="#fff" backgroundOpacity={0.8} radius="sm">
+          <Center h="100%">
+            <Alert color="red" title="エラーが発生しました" maw={400}>
+              {error}
+            </Alert>
+          </Center>
+        </Overlay>
+      )}
       <Container size="lg" mt="xl">
         <TrendLineChart data={data} />
       </Container>

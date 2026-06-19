@@ -7,7 +7,7 @@ export function DashboardPage() {
     <>
       <Container size="lg" mt="xl">
         <Title order={2}>ダッシュボード</Title>
-        <Tabs defaultValue="trend" mt="md">
+        <Tabs defaultValue="trend" mt="md" keepMountedMode="display-none">
           <Tabs.List>
             <Tabs.Tab value="trend">推移</Tabs.Tab>
             <Tabs.Tab value="article">記事別</Tabs.Tab>

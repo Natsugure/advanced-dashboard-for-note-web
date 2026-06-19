@@ -1,4 +1,4 @@
-import { Box, Container, LoadingOverlay, SegmentedControl } from "@mantine/core";
+import { Alert, Box, Center, Container, LoadingOverlay, Overlay, SegmentedControl } from "@mantine/core";
 import { useState } from "react";
 import { ArticleBarChart, type Type } from "./ArticleBarChart";
 import { ArticleTable } from "./ArticleTable";
@@ -12,7 +12,7 @@ const DATA_TYPE_OPTIONS: { label: string; value: Type }[] = [
 
 export function ArticleTabContent() {
   const [dataType, setDataType] = useState<Type>("read")
-  const { data, isLoading } = useArticleData()
+  const { data, isLoading, error } = useArticleData()
   return (
     <Box pos="relative">
       <LoadingOverlay
@@ -20,6 +20,15 @@ export function ArticleTabContent() {
         zIndex={1000}
         overlayProps={{ radius: 'sm', blur: 1 }}
       />
+      {error && (
+        <Overlay zIndex={1000} color="#fff" backgroundOpacity={0.8} radius="sm">
+          <Center h="100%">
+            <Alert color="red" title="エラーが発生しました" maw={400}>
+              {error}
+            </Alert>
+          </Center>
+        </Overlay>
+      )}
       <Container size="lg" mt="xl">
         <SegmentedControl
           value={dataType}
