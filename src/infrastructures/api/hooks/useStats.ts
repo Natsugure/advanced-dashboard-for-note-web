@@ -9,7 +9,26 @@ export function useStats() {
       if (error) {
         throw new Error(error)
       }
+
+      if (!data) {
+        throw new Error('Something went wrong.')
+      }
       return data
     }
-    return { fetchAllStats }
+
+    const fetchDailyStats = async () => {
+      const { data, error } = await api.GET("/api/me/stats/daily")
+  
+      if (error) {
+        throw new Error(error)
+      }
+
+      if (!data) {
+        throw new Error('Something went wrong.')
+      }
+
+      return data
+    }
+
+    return { fetchAllStats, fetchDailyStats }
 }
