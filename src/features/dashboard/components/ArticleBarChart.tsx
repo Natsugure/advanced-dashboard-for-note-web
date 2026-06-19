@@ -1,22 +1,38 @@
 import { BarChart } from "@mantine/charts"
 import type { ArticleDataPoint } from "../types"
 
-interface Props {
-  data: ArticleDataPoint[]
+export type Type = "read" | "like" | "comment"
+
+interface Series {
+  name: string
+  label: string
+  color: string
 }
 
-export function ArticleBarChart({ data }: Props) {
+interface Props {
+  data: ArticleDataPoint[],
+  type: Type
+}
+
+export function ArticleBarChart({ data, type }: Props) {
+  const series = {
+    read: { name: 'read', label: "ビュー",color: 'green.8' },
+    like: { name: 'like', label: "いいね", color: 'pink.6' },
+    comment: { name: 'comment', label: "コメント", color: 'gray.6' },
+  } as const satisfies {
+    [key: string]: Series
+  }
+
   return (
     <>
       <BarChart
         h={300}
+        orientation="vertical"
+        gridAxis="y"
+        barProps={{ maxBarSize: 100 }}
         data={data}
         dataKey="title"
-        series={[
-          { name: 'read', color: 'green.8' },
-          { name: 'like', color: 'pink.6' },
-          { name: 'comment', color: 'gray.6' },
-        ]}
+        series={[series[type]]}
       />
     </>
   )

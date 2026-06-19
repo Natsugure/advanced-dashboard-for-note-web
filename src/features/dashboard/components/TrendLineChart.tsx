@@ -10,6 +10,7 @@ export function TrendLineChart({ data }: Props) {
     <>
       <LineChart
         h={300}
+        w="100%"
         data={data}
         dataKey="date"
         series={[
