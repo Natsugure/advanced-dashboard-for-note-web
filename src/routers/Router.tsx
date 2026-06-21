@@ -5,7 +5,7 @@ import { LoginPage } from "../features/auth/pages/LoginPage";
 import { SettingsPage } from "../features/settings/pages/SettingsPage";
 import { Header } from "../shared/components/layouts/Header";
 import { AuthGuardWrapper } from "../features/auth/components/AuthGuardWrapper";
-import { RegisterPage } from "../features/auth/pages/RegisterPage";
+import { SignUpPage } from "../features/auth/pages/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/register",
-        element: <RegisterPage />,
+        path: "/signup",
+        element: <SignUpPage />,
       }
     ]
   }
