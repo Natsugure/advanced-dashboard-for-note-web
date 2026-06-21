@@ -1,11 +1,15 @@
 import { SignIn } from "@clerk/react";
-import { Title } from "@mantine/core";
+import { Container, Stack, Title } from "@mantine/core";
 
 export function LoginPage() {
   return (
     <>
-      <Title order={2}>ログインページ</Title>
-      <SignIn routing="path" path="/login" fallbackRedirectUrl="/dashboard" />
+      <Container mt="md">
+        <Title order={2}>ログインページ</Title>
+        <Stack mt="xl" align="center">
+          <SignIn routing="path" path="/login" fallbackRedirectUrl="/dashboard" />
+        </Stack>
+    </Container>
     </>
   )
 }
