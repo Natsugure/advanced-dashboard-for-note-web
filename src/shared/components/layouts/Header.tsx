@@ -1,8 +1,11 @@
-import { Show, SignInButton, UserButton } from "@clerk/react";
-import { Flex, Image, Text } from "@mantine/core";
-import { Outlet } from "react-router";
+import { Show, UserButton } from "@clerk/react";
+import { Button, Flex, Image, Text } from "@mantine/core";
+import { Outlet, useNavigate } from "react-router";
 
 export function Header() {
+  const navigate = useNavigate()
+
+
   return (
     <>
       <Flex
@@ -21,7 +24,7 @@ export function Header() {
 
         <Flex>
           <Show when="signed-out">
-            <SignInButton />
+            <Button onClick={() => navigate('/login')}>ログイン</Button> 
           </Show>
           <Show when="signed-in">
             <UserButton />
