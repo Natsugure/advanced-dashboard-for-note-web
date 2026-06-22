@@ -1,5 +1,5 @@
 import { SignUp } from "@clerk/react";
-import { Box, Container, Stack, Title } from "@mantine/core";
+import { Container, Stack, Title } from "@mantine/core";
 
 export function SignUpPage() {
   return (
