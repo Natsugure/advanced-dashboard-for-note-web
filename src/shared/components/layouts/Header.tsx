@@ -1,8 +1,13 @@
-import { Show, SignInButton, UserButton } from "@clerk/react";
-import { Flex, Image, Text } from "@mantine/core";
-import { Outlet } from "react-router";
+import { Show, SignOutButton, useClerk } from "@clerk/react";
+import { ActionIcon, Button, Flex, Image, Menu, Text } from "@mantine/core";
+import { Outlet, useNavigate } from "react-router";
+import { PiUserCircleLight } from "react-icons/pi";
+import { MdHelpOutline, MdSettings, MdLogout } from "react-icons/md";
 
 export function Header() {
+  const navigate = useNavigate()
+  const { openUserProfile } = useClerk()
+
   return (
     <>
       <Flex
@@ -21,10 +26,34 @@ export function Header() {
 
         <Flex>
           <Show when="signed-out">
-            <SignInButton />
+            <Button onClick={() => navigate('/login')}>ログイン</Button> 
           </Show>
           <Show when="signed-in">
-            <UserButton />
+            <Menu shadow="md" width={200}>
+              <Menu.Target>
+                <ActionIcon color="teal" variant="transparent" aria-label="user">
+                  <PiUserCircleLight style={{ width: '100%', height: '100%' }} />
+                </ActionIcon>
+              </Menu.Target>
+
+              <Menu.Dropdown>
+                <Menu.Item leftSection={<MdHelpOutline />}>
+                  使い方
+                </Menu.Item>
+                
+                <Menu.Item leftSection={<MdSettings />} onClick={() => openUserProfile()}>
+                  アカウント設定
+                </Menu.Item>
+                
+
+                <Menu.Divider />
+                <SignOutButton>
+                  <Menu.Item leftSection={<MdLogout />}>
+                    ログアウト
+                  </Menu.Item>
+                </SignOutButton>
+              </Menu.Dropdown>
+            </Menu>
           </Show>
         </Flex>
       </Flex>

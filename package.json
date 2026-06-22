@@ -11,7 +11,8 @@
     "generate:api-types": "openapi-typescript http://localhost:8787/api/docs -o src/types/api.ts"
   },
   "dependencies": {
-    "@clerk/react": "^6.7.1",
+    "@clerk/localizations": "4.9.2",
+    "@clerk/react": "6.10.4",
     "@mantine/charts": "^9.1.1",
     "@mantine/core": "^9.1.1",
     "@mantine/form": "^9.1.1",
