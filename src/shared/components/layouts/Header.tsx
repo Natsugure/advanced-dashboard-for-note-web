@@ -3,6 +3,7 @@ import { ActionIcon, Button, Flex, Image, Menu, Text } from "@mantine/core";
 import { Outlet, useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
 import { MdHelpOutline, MdSettings, MdLogout } from "react-icons/md";
+import { Footer } from "./Footer";
 
 export function Header() {
   const navigate = useNavigate()
@@ -58,6 +59,7 @@ export function Header() {
         </Flex>
       </Flex>
       <Outlet />
+      <Footer />
     </>
   );
 }
