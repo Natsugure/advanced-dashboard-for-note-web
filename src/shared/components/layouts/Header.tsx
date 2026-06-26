@@ -3,13 +3,14 @@ import { ActionIcon, Button, Flex, Image, Menu, Text } from "@mantine/core";
 import { Outlet, useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
 import { MdHelpOutline, MdSettings, MdLogout } from "react-icons/md";
+import { Footer } from "./Footer";
 
 export function Header() {
   const navigate = useNavigate()
   const { openUserProfile } = useClerk()
 
   return (
-    <>
+    <Flex direction="column" style={{ minHeight: '100vh' }}>
       <Flex
         align="center"
         justify="space-between"
@@ -57,7 +58,10 @@ export function Header() {
           </Show>
         </Flex>
       </Flex>
-      <Outlet />
-    </>
+      <div style={{ flex: 1 }}>
+        <Outlet />
+      </div>
+      <Footer />
+    </Flex>
   );
 }
