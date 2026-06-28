@@ -53,7 +53,7 @@ export function ArticleTabContent() {
           type={dataType}
         />
       </Container>
-      <Container size="md" mt="xl">
+      <Container size="md" mt="xl" mb="xl">
         <ArticleTable data={data} sortType={sortType}/>
       </Container>
     </Box>
