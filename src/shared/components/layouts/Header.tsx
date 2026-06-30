@@ -1,6 +1,6 @@
 import { Show, SignOutButton, useClerk } from "@clerk/react";
 import { ActionIcon, Button, Flex, Image, Menu, Text } from "@mantine/core";
-import { Outlet, useNavigate } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
 import { MdHelpOutline, MdSettings, MdLogout } from "react-icons/md";
 import { Footer } from "./Footer";
@@ -20,7 +20,7 @@ export function Header() {
         p="sm"
         style={{ borderBottom: '1px solid var(--mantine-color-gray-3)' }}
       >
-        <Flex>
+        <Flex component={Link} to="/dashboard" align="center" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
           <Image src="/logo.png" h={32} w={32} />
           <Text fw={700} size="lg">Advanced Dashboard for note</Text>
         </Flex>
@@ -38,7 +38,7 @@ export function Header() {
               </Menu.Target>
 
               <Menu.Dropdown>
-                <Menu.Item leftSection={<MdHelpOutline />}>
+                <Menu.Item leftSection={<MdHelpOutline />} onClick={() => navigate("/help")}>
                   使い方
                 </Menu.Item>
                 

@@ -33,6 +33,10 @@ export function ArticleBarChart({ data, type }: Props) {
         data={data}
         dataKey="title"
         series={[series[type]]}
+        yAxisProps={{
+          width: 200,
+          tickFormatter: (value: string) => value.length > 24 ? `${value.slice(0, 24)}…` : value,
+        }}
       />
     </>
   )

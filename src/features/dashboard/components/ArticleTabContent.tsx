@@ -1,7 +1,7 @@
 import { Alert, Box, Center, Container, LoadingOverlay, Overlay, SegmentedControl } from "@mantine/core";
 import { useState } from "react";
 import { ArticleBarChart, type Type } from "./ArticleBarChart";
-import { ArticleTable } from "./ArticleTable";
+import { ArticleTable, type SortType } from "./ArticleTable";
 import { useArticleData } from "../hooks/useArticleData";
 
 const DATA_TYPE_OPTIONS: { label: string; value: Type }[] = [
@@ -13,6 +13,18 @@ const DATA_TYPE_OPTIONS: { label: string; value: Type }[] = [
 export function ArticleTabContent() {
   const [dataType, setDataType] = useState<Type>("read")
   const { data, isLoading, error } = useArticleData()
+
+  const sortType: SortType = (() => {
+    switch (dataType) {
+      case "read": 
+        return "readDsc"
+      case "like":
+        return "likeDsc"
+      case "comment":
+        return "commentDsc"
+    }
+  })()
+
   return (
     <Box pos="relative">
       <LoadingOverlay
@@ -36,10 +48,13 @@ export function ArticleTabContent() {
           data={DATA_TYPE_OPTIONS}
           mb="md"
         />
-        <ArticleBarChart data={data} type={dataType} />
+        <ArticleBarChart 
+          data={data.toSorted((a, b) => b[dataType] - a[dataType]).slice(0, 10)} 
+          type={dataType}
+        />
       </Container>
-      <Container size="md" mt="xl">
-        <ArticleTable data={data} />
+      <Container size="md" mt="xl" mb="xl">
+        <ArticleTable data={data} sortType={sortType}/>
       </Container>
     </Box>
   )
