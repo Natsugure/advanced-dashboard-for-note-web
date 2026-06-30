@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import App from "../App";
 import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
 import { LoginPage } from "../features/auth/pages/LoginPage";
 import { SettingsPage } from "../features/settings/pages/SettingsPage";
@@ -9,6 +8,8 @@ import { SignUpPage } from "../features/auth/pages/SignUpPage";
 import { HelpPage } from "@/features/help/pages/HelpPage";
 import { PrivacyPolicyPage } from "@/features/help/pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "@/features/help/pages/TermsOfServicePage";
+import { PromotionPage } from "@/features/promotion/pages/PromotionPage";
+import { DemoPage } from "@/features/demo/pages/DemoPage";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +19,6 @@ const router = createBrowserRouter([
         element: <AuthGuardWrapper />,
         children: [
           {
-            path: "/",
-            element: <App />,
-          },
-          {
             path: "/dashboard",
             element: <DashboardPage />,
           },
@@ -30,6 +27,14 @@ const router = createBrowserRouter([
             element: <SettingsPage />,
           }
         ]
+      },
+      {
+        path: "/",
+        element: <PromotionPage />,
+      },
+      {
+        path: "/demo",
+        element: <DemoPage />,
       },
       {
         path: "/login",
