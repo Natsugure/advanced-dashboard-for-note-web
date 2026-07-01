@@ -2,7 +2,7 @@ import type { paths } from "@/types/api"
 import type { Dayjs } from "dayjs"
 
 type ArticleStatsResponse =
-  paths["/api/me/articles/{noteArticleId}/stats"]["get"]["responses"][200]["content"]["application/json"]
+  paths["/me/articles/{noteArticleId}/stats"]["get"]["responses"][200]["content"]["application/json"]
 
 export type Article = ArticleStatsResponse["article"]
 

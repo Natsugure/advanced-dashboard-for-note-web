@@ -4,7 +4,7 @@ export function useStats() {
     const api = useApiClient()
   
     const fetchAllStats = async () => {
-      const { data, error } = await api.GET("/api/me/stats")
+      const { data, error } = await api.GET("/me/stats")
   
       if (error) {
         throw new Error(error)
@@ -17,7 +17,7 @@ export function useStats() {
     }
 
     const fetchDailyStats = async () => {
-      const { data, error } = await api.GET("/api/me/stats/daily")
+      const { data, error } = await api.GET("/me/stats/daily")
   
       if (error) {
         throw new Error(error)
