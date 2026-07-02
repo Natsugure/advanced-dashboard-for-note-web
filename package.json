@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:api-types": "openapi-typescript http://localhost:8787/api/docs -o src/types/api.ts"
+    "generate:api-types": "openapi-typescript http://localhost:8787/docs -o src/types/api.ts"
   },
   "dependencies": {
     "@clerk/localizations": "4.9.2",

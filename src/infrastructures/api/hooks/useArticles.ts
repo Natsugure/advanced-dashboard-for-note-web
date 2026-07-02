@@ -4,7 +4,7 @@ export function useArticles() {
     const api = useApiClient()
   
     const fetchArticles = async () => {
-      const { data, error } = await api.GET("/api/me/articles")
+      const { data, error } = await api.GET("/me/articles")
   
       if (error) {
         throw new Error(error)
