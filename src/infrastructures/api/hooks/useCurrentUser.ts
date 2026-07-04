@@ -4,9 +4,12 @@ export function useCurrentUser() {
   const api = useApiClient()
 
   const fetchUser = async () => {
-    const { data, error } = await api.GET("/me/user")
+    const { data, error, response } = await api.GET("/me/user")
 
     if (error) {
+      if (response.status === 404) {
+        return undefined
+      }
       throw new Error(error)
     }
     return data
