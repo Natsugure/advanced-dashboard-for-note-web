@@ -8,9 +8,9 @@ import { useAuth } from "@clerk/react";
 import { RxLinkBreak2 } from "react-icons/rx";
 import { useCurrentUser } from "@/infrastructures/api/hooks/useCurrentUser";
 import { CrxStoreButton } from "@/features/help/components/CrxStoreButton";
+import { notifications } from "@mantine/notifications";
 
 export function DashboardPage() {
-  const [userError, setUserError] = useState("")
   const [isPresentTutorialOverlay, setIsPresentTutorialOverlay] = useState(false)
   const { setUser, setIsLoading } = useContext(UserContext)
   const { isLoaded, isSignedIn } = useAuth()
@@ -27,15 +27,20 @@ export function DashboardPage() {
           setIsPresentTutorialOverlay(!res)
         } catch(e) {
           console.error(e)
-          setUserError("ユーザー情報の取得に失敗しました")
+          notifications.show({
+            title: 'エラー',
+            message: 'ユーザー情報の取得に失敗しました',
+            color: "red"
+          })
         } finally {
           setIsLoading(false)
         }
       }
     }
-
+    
     void setUserContext()
-  }, [isLoaded, isSignedIn, setUser])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoaded])
 
   return (
     <>
@@ -51,9 +56,6 @@ export function DashboardPage() {
               >
                 <EmptyState.Actions>
                   <CrxStoreButton size="md" />
-                </EmptyState.Actions>
-                <EmptyState.Actions>
-                  
                 </EmptyState.Actions>
                 <Text mt="xl">詳しい使い方は、<Anchor component={Link} to="/help" fw={700}>ヘルプページ</Anchor>をご覧ください。</Text>
               </EmptyState>
