@@ -1,8 +1,6 @@
-import { Button, Container, Image, List, Text, Title } from "@mantine/core"
-import { SiChromewebstore } from "react-icons/si";
+import { Box, Button, Container, Image, List, Text, Title } from "@mantine/core"
 import { useNavigate } from "react-router";
-
-const crxStoreUrl = ""
+import { CrxStoreButton } from "../components/CrxStoreButton";
 
 export function HelpPage() {
   const navigate = useNavigate()
@@ -34,7 +32,9 @@ export function HelpPage() {
 
         <Title order={3} mt="lg">Step 2. Chrome 拡張機能をインストール</Title>
         <Text mt={4}>noteから統計を取得するには、Chrome 拡張機能が必要です。</Text>
-        <Button mt="sm" leftSection={<SiChromewebstore />} onClick={() => {window.open(crxStoreUrl, "_blank");}}>ここからダウンロード</Button>
+        <Box mt="md">
+          <CrxStoreButton />
+        </Box>
 
         <Title order={3} mt="lg">Step 3. ブラウザで note にログイン</Title>
         <Text>ブラウザの通常タブで、統計を取得したい note のアカウントにログインします。</Text>
