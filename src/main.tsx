@@ -6,8 +6,10 @@ import { customLocalization } from './features/auth/loc/ja-jp.ts'
 import router from './routers/Router.tsx'
 import '@mantine/core/styles.css'
 import '@mantine/charts/styles.css';
+import '@mantine/notifications/styles.css';
 import './theme.css'
 import { createTheme, MantineProvider, type MantineColorsTuple } from '@mantine/core'
+import { Notifications } from '@mantine/notifications';
 
 const myColor: MantineColorsTuple = [
   '#e6fdf7',
@@ -46,8 +48,9 @@ createRoot(document.getElementById('root')!).render(
       localization={customLocalization}
     >
       <MantineProvider theme={theme}>
+        <Notifications />
         <RouterProvider router={router} />
       </MantineProvider>
     </ClerkProvider>
-  </StrictMode>,
+  </StrictMode>
 )

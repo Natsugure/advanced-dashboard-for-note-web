@@ -16,6 +16,7 @@
     "@mantine/charts": "9.4.0",
     "@mantine/core": "9.4.0",
     "@mantine/hooks": "9.4.0",
+    "@mantine/notifications": "9.4.0",
     "@tailwindcss/vite": "4.3.2",
     "dayjs": "1.11.21",
     "react": "19.2.7",
