@@ -1,4 +1,4 @@
-import { Show, SignOutButton, useAuth, useClerk } from "@clerk/react";
+import { Show, useAuth, useClerk } from "@clerk/react";
 import { ActionIcon, Button, Flex, Image, Menu, Text } from "@mantine/core";
 import { Link, Outlet, useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
@@ -48,13 +48,11 @@ export function Header() {
                   アカウント設定
                 </Menu.Item>
                 
-
                 <Menu.Divider />
-                <SignOutButton>
-                  <Menu.Item leftSection={<MdLogout />}>
-                    ログアウト
-                  </Menu.Item>
-                </SignOutButton>
+
+                <Menu.Item leftSection={<MdLogout />} onClick={() => navigate("/logout")}>
+                  ログアウト
+                </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Show>
