@@ -7,7 +7,7 @@ export function LoginPage() {
       <Container mt="md">
         <Title order={2}>ログインページ</Title>
         <Stack mt="xl" align="center">
-          <SignIn routing="path" path="/login" fallbackRedirectUrl="/dashboard" />
+          <SignIn routing="hash" fallbackRedirectUrl="/dashboard" />
         </Stack>
     </Container>
     </>
