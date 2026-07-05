@@ -11,6 +11,7 @@ import { TermsOfServicePage } from "@/features/help/pages/TermsOfServicePage";
 import { PromotionPage } from "@/features/promotion/pages/PromotionPage";
 import { DemoPage } from "@/features/demo/pages/DemoPage";
 import { Page404 } from "@/shared/components/pages/Page404";
+import LogoutPage from "@/features/auth/pages/LogoutPage";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/logout",
+        element: <LogoutPage />,
       },
       {
         path: "/signup",
