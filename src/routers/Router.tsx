@@ -10,6 +10,8 @@ import { PrivacyPolicyPage } from "@/features/help/pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "@/features/help/pages/TermsOfServicePage";
 import { PromotionPage } from "@/features/promotion/pages/PromotionPage";
 import { DemoPage } from "@/features/demo/pages/DemoPage";
+import { ClientTrustPage } from "@/features/auth/pages/ClientTrustPage";
+import { Page404 } from "@/shared/components/pages/Page404";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "/login/client-trust",
+        element: <ClientTrustPage />,
+      },
+      {
         path: "/signup",
         element: <SignUpPage />,
       },
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <PrivacyPolicyPage />,
+      },
+      {
+        path: "*",
+        element: <Page404 />,
       },
     ]
   }
