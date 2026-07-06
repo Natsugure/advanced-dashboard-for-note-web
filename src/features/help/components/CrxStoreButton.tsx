@@ -5,7 +5,7 @@ interface Props {
   size?: ButtonSize
 }
 
-const crxStoreUrl = ""
+const crxStoreUrl = "https://chromewebstore.google.com/detail/advanced-dashboard-for-no/jghfekmichjnabnglepmiapkffgflonl"
 
 export function CrxStoreButton({ size }: Props) {
   return (
