@@ -198,18 +198,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            articles: {
-                                /** @example 123456789 */
-                                id: number;
-                                /** @example n12345abcdef */
-                                key: string;
-                                title: string;
-                                /**
-                                 * Format: date-time
-                                 * @example 2023-01-01T00:00:00.000Z
-                                 */
-                                publishedAt: string;
-                            }[];
+                            articles: components["schemas"]["Article"][];
                         };
                     };
                 };
@@ -269,12 +258,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            article: {
-                                title: string;
-                                key: string;
-                                /** Format: date-time */
-                                publishedAt: string;
-                            };
+                            article: components["schemas"]["Article"];
                             stats: {
                                 readCount: number;
                                 likeCount: number;
@@ -352,12 +336,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            article: {
-                                title: string;
-                                key: string;
-                                /** Format: date-time */
-                                publishedAt: string;
-                            };
+                            article: components["schemas"]["Article"];
                             stats: {
                                 readCount: number;
                                 likeCount: number;
@@ -424,12 +403,7 @@ export interface paths {
                     content: {
                         "application/json": {
                             data: {
-                                article: {
-                                    title: string;
-                                    key: string;
-                                    /** Format: date-time */
-                                    publishedAt: string;
-                                };
+                                article: components["schemas"]["Article"];
                                 stats: {
                                     readCount: number;
                                     likeCount: number;
@@ -548,7 +522,19 @@ export interface components {
              * Format: date-time
              * @example 2023-01-01T00:00:00.000Z
              */
-            lastNoteCalculatedAt: string;
+            lastNoteCalculatedAt: string | null;
+        };
+        Article: {
+            /** @example 123456789 */
+            id: number;
+            /** @example n12345abcdef */
+            key: string;
+            title: string;
+            /**
+             * Format: date-time
+             * @example 2023-01-01T00:00:00.000Z
+             */
+            publishedAt: string;
         };
         DailyStats: {
             /** @example 2023-01-01 */
